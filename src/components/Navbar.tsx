@@ -1,19 +1,39 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Navbar() {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navItems = [
+        { href: '#about', label: 'À propos' },
+        { href: '#skills', label: 'Compétences' },
+        { href: '#projects', label: 'Projets' },
+        { href: '#contact', label: 'Contact' },
+    ];
+
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-content">
                 <Link href="/" className="navbar-logo">
-                    DC
+                    DC<span style={{ opacity: 0.5 }}>.</span>
                 </Link>
                 <ul className="navbar-links">
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#skills">Compétences</a></li>
-                    <li><a href="#projects">Projets</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    {navItems.map((item) => (
+                        <li key={item.href}>
+                            <a href={item.href}>{item.label}</a>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </nav>

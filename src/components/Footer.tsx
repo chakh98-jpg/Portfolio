@@ -1,3 +1,5 @@
+'use client';
+
 import { portfolioData } from '@/data/portfolio';
 
 export default function Footer() {
@@ -8,22 +10,25 @@ export default function Footer() {
         <footer className="footer">
             <div className="container footer-content">
                 <p className="footer-text">
-                    © {currentYear} {personal.name}. Tous droits réservés.
+                    © {currentYear} <a href="#about">{personal.name}</a>.
+                    Fait avec ❤️ et beaucoup de ☕
                 </p>
                 <div className="footer-socials">
                     <a
                         href={`mailto:${personal.email}`}
                         className="social-link"
                         aria-label="Email"
+                        title="Envoyer un email"
                     >
                         📧
                     </a>
                     <a
-                        href="https://github.com"
+                        href="https://github.com/chakh98-jpg"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="social-link"
                         aria-label="GitHub"
+                        title="Voir mon GitHub"
                     >
                         💻
                     </a>
@@ -33,6 +38,7 @@ export default function Footer() {
                         rel="noopener noreferrer"
                         className="social-link"
                         aria-label="LinkedIn"
+                        title="Voir mon LinkedIn"
                     >
                         💼
                     </a>
