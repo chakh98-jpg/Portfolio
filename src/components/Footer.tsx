@@ -11,7 +11,6 @@ export default function Footer() {
             <div className="container footer-content">
                 <p className="footer-text">
                     © {currentYear} <a href="#about">{personal.name}</a>.
-                    Fait avec ❤️ et beaucoup de ☕
                 </p>
                 <div className="footer-socials">
                     <a
